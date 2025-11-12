@@ -3,6 +3,8 @@ package com.aprendizado.estudo.entity;
 import jakarta.persistence.*;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Aula")
@@ -18,5 +20,13 @@ public class Aula {
     @Column(nullable = false, name = "horaFim")
     private Time horaFim;
 
+
+    @ManyToMany
+    @JoinTable(
+            name = "aulas_alunos",
+            joinColumns = @JoinColumn(name = "id_aula"),
+            inverseJoinColumns = @JoinColumn(name = "id_aluno")
+    )
+    private List<Aluno> alunos = new ArrayList<>();
 
 }
