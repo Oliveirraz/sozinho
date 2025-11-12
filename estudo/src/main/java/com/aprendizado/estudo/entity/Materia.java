@@ -9,4 +9,7 @@ public class Materia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, name = "nome", length = 100)
+    private String nome;
 }
