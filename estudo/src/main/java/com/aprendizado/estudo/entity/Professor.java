@@ -1,12 +1,11 @@
 package com.aprendizado.estudo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,5 +20,16 @@ public class Professor extends Ususario{
     @Column(nullable = false, name = "valorHoraAula", precision = 10, scale = 2)
     private BigDecimal valorHoraAula;
 
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Aula> aultas = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "professor_materia",
+            joinColumns = @JoinColumn(name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(name = "materia_id")
+
+    )
+    private List<Materia> materias = new ArrayList<>();
 
 }

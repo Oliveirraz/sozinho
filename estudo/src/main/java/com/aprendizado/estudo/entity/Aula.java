@@ -20,6 +20,9 @@ public class Aula {
     @Column(nullable = false, name = "horaFim")
     private Time horaFim;
 
+    @Column(nullable = false, name = "local")
+    private String local;
+
 
     @ManyToMany
     @JoinTable(
@@ -28,5 +31,9 @@ public class Aula {
             inverseJoinColumns = @JoinColumn(name = "id_aluno")
     )
     private List<Aluno> alunos = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_professor", nullable = false)
+    private Professor professor;
 
 }

@@ -19,4 +19,12 @@ public class Aluno extends Ususario{
     @ManyToMany(mappedBy = "alunos")
     private List<Aula> aulas = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "aluno_materia",
+            joinColumns = @JoinColumn(name = "aluno_id"),
+            inverseJoinColumns = @JoinColumn(name = "materia_id")
+    )
+    private List<Materia> materias = new ArrayList<>();
+
 }
