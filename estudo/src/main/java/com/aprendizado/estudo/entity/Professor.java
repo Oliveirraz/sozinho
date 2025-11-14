@@ -12,16 +12,16 @@ import java.util.List;
 @Table(name = "professor")
 @Getter
 @Setter
-public class Professor extends Ususario{
+public class Professor extends Usuario {
 
     @Column(nullable = false, name = "perfil")
-    private String prfil;
+    private String perfil;
 
     @Column(nullable = false, name = "valorHoraAula", precision = 10, scale = 2)
     private BigDecimal valorHoraAula;
 
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Aula> aultas = new ArrayList<>();
+    private List<Aula> aulas = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(

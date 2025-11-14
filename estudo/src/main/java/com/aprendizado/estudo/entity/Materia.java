@@ -1,12 +1,20 @@
 package com.aprendizado.estudo.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "materia")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Materia {
 
     @Id
